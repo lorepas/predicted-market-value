@@ -48,20 +48,21 @@ public class AppController {
 		generateFileJSON.setDisable(false);
 	}
 	public void ActionPredictionMarketValue(ActionEvent e) throws Exception {
-//		String textTeam = teamTextField.getText(); 
-//		String textNation = nationTextField.getText(); 
-//		String textRole = roleTextField.getText(); 
-//		String textBornDate = bornDateTextField.getText(); 
-//		Integer presenciesNumber = Integer.valueOf(presencesTextField.getText()); 
-//		Integer callsNumber = Integer.valueOf(callsTextField.getText());
-//		Integer goalsNumber = Integer.valueOf(goalsTextField.getText());
-//		Integer assistsNumber = Integer.valueOf(assistsTextField.getText());
-//		Integer penaltyGoalsNumber = Integer.valueOf(penaltyGoalsTextField.getText());
-//		Integer ownGoalsNumber = Integer.valueOf(ownGoalsTextField.getText()); 
-//		Integer yellowCardsNumber = Integer.valueOf(yellowCardsTextField.getText()); 
-//		Integer doubleYellowCardsNumber = Integer.valueOf(doubleYellowCardsTextField.getText()); 
-//		Integer redCardsNumber = Integer.valueOf(redCardsTextField.getText());
-//		Long minutesPlayedNumber = Long.valueOf(minutesPlayedTextField.getText());
-		App.sharedInstance.getRandomTreeClassifier().classifier();
+		String textTeam = teamTextField.getText(); 
+		String textNation = nationTextField.getText(); 
+		String textRole = roleTextField.getText(); 
+		String textBornDate = bornDateTextField.getText(); 
+		Integer presenciesNumber = Integer.valueOf(presencesTextField.getText()); 
+		Integer callsNumber = Integer.valueOf(callsTextField.getText());
+		Integer goalsNumber = Integer.valueOf(goalsTextField.getText());
+		Integer assistsNumber = Integer.valueOf(assistsTextField.getText());
+		Integer penaltyGoalsNumber = Integer.valueOf(penaltyGoalsTextField.getText());
+		Integer ownGoalsNumber = Integer.valueOf(ownGoalsTextField.getText()); 
+		Integer yellowCardsNumber = Integer.valueOf(yellowCardsTextField.getText()); 
+		Integer doubleYellowCardsNumber = Integer.valueOf(doubleYellowCardsTextField.getText()); 
+		Integer redCardsNumber = Integer.valueOf(redCardsTextField.getText());
+		Long minutesPlayedNumber = Long.valueOf(minutesPlayedTextField.getText());
+		App.sharedInstance.getRandomTreeClassifier().classifier(textTeam,textNation,textRole,textBornDate,presenciesNumber,callsNumber,
+				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
 	}
 }
