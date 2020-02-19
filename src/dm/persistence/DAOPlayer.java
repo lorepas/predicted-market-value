@@ -30,7 +30,7 @@ public class DAOPlayer implements IDAOPlayer {
 //						    new Document("$project", 
 //						    new Document("fullName", 1L)
 //						            .append("bornDate", 1L)
-//						           // .append("marketValue", 1L)
+//						            .append("marketValue", 1L)
 //						            .append("team", 1L)
 //						            .append("nation", 1L)
 //						            .append("league", 1L)
@@ -43,7 +43,8 @@ public class DAOPlayer implements IDAOPlayer {
 //						    new Document("$group", 
 //						    new Document("_id", 
 //						    new Document("name", "$fullName")
-//						                .append("season", "$seasonDate"))
+//						                .append("season", "$seasonDate")
+//						                .append("bornDate", "$bornDate"))
 //						            .append("season", 
 //						    new Document("$first", "$seasonDate"))
 //						            .append("fullName", 
@@ -56,8 +57,8 @@ public class DAOPlayer implements IDAOPlayer {
 //						    new Document("$first", "$team"))
 //						            .append("bornDate", 
 //						    new Document("$first", "$bornDate"))
-//						            //.append("marketValue", 
-//						    //new Document("$first", "$marketValue"))
+//						            .append("marketValue", 
+//						    new Document("$first", "$marketValue"))
 //						            .append("yellowCards", 
 //						    new Document("$sum", "$detailedPerformances.yellowCards"))
 //						            .append("doubleYellowCards", 
@@ -72,8 +73,8 @@ public class DAOPlayer implements IDAOPlayer {
 //						    new Document("$sum", "$detailedPerformances.goals"))
 //						            .append("assists", 
 //						    new Document("$sum", "$detailedPerformances.assists"))
-//						            .append("penalityGoals", 
-//						    new Document("$sum", "$detailedPerformances.penalityGoals"))
+//						            .append("penaltyGoals", 
+//						    new Document("$sum", "$detailedPerformances.penaltyGoals"))
 //						            .append("goalConceded", 
 //						    new Document("$sum", "$detailedPerformances.goalsConceded"))
 //						            .append("cleanSheets", 
@@ -83,7 +84,8 @@ public class DAOPlayer implements IDAOPlayer {
 //						            .append("presences", 
 //						    new Document("$sum", "$detailedPerformances.presences"))), 
 //						    new Document("$match", 
-//						    new Document("season", "18/19")))
+//						    new Document("season", "19/20")))
+					
 					Arrays.asList(new Document("$unwind", 
 						    new Document("path", "$detailedPerformances")), 
 						    new Document("$project", 
@@ -101,13 +103,15 @@ public class DAOPlayer implements IDAOPlayer {
 						    new Document("_id", 
 						    new Document("name", "$fullName")
 						                .append("season", "$seasonDate")
-						                .append("team", "$detailedPerformances.team"))
+						                .append("bornDate", "$bornDate"))
 						            .append("season", 
 						    new Document("$first", "$seasonDate"))
 						            .append("fullName", 
 						    new Document("$first", "$fullName"))
 						            .append("role", 
 						    new Document("$first", "$role"))
+						            .append("team", 
+						    new Document("$first", "$detailedPerformances.team"))
 						            .append("nation", 
 						    new Document("$first", "$nation"))
 						            .append("bornDate", 
@@ -145,11 +149,7 @@ public class DAOPlayer implements IDAOPlayer {
 				i++;
 				Document document = cursor.next();
 				System.out.println("Player n." + i);
-				System.out.println(document.toJson());
-				String team = (String) document.get("team");
-				System.out.println(team);
-				//double marketValue = retrieveAvgMarketValueFromPlayer(document.getString("fullName"));
-				double marketValue = 0.0;
+				double marketValue = retrieveAvgMarketValueFromPlayer(document.getString("fullName"));
 				BigDecimal bd = new BigDecimal(marketValue);
 				document.put("marketValue", bd.toBigInteger().toString());
 				Date bornDate = (Date) document.get("bornDate");
@@ -159,7 +159,6 @@ public class DAOPlayer implements IDAOPlayer {
 				}
 				PerformanceLastSeason performance = PerformanceLastSeason.teamFromJson(document.toJson());
 				d_performances.add(performance);
-				break;
 			}
 		} catch(MongoException me) {
 			throw new DAOException(me);
@@ -196,13 +195,15 @@ public class DAOPlayer implements IDAOPlayer {
 //						    new Document("$group", 
 //						    new Document("_id", 
 //						    new Document("name", "$fullName")
-//						                .append("seasonDateMW", "$seasonDateMW"))
+//						                .append("seasonDateMW", "$seasonDateMW")
+//						                .append("team", "$marketValueHistory.team"))
 //						            .append("name", 
 //						    new Document("$first", "$fullName"))
-//						            .append("team", 
-//						    new Document("$first", "$team"))
 //						            .append("marketValue", 
-//						    new Document("$avg", "$marketValueHistory.marketValue"))))
+//						    new Document("$avg", "$marketValueHistory.marketValue"))), 
+//						    new Document("$match", 
+//						    new Document("_id.team", team)))
+					
 					Arrays.asList(new Document("$unwind", 
 						    new Document("path", "$marketValueHistory")), 
 						    new Document("$project", 
@@ -220,14 +221,11 @@ public class DAOPlayer implements IDAOPlayer {
 						    new Document("$group", 
 						    new Document("_id", 
 						    new Document("name", "$fullName")
-						                .append("seasonDateMW", "$seasonDateMW")
-						                .append("team", "$marketValueHistory.team"))
+						                .append("seasonDateMW", "$seasonDateMW"))
 						            .append("name", 
 						    new Document("$first", "$fullName"))
 						            .append("marketValue", 
-						    new Document("$avg", "$marketValueHistory.marketValue"))), 
-						    new Document("$match", 
-						    new Document("_id.team", "FC Liverpool")))
+						    new Document("$avg", "$marketValueHistory.marketValue"))))
 					).iterator();
 			while(cursor.hasNext()) {
 				Document document = cursor.next();

@@ -11,7 +11,7 @@ public class PerformanceLastSeason {
 	private String nation;
 	private String role;
 	private String bornDate;
-	private String marketValue;
+	private long marketValue;
 //	private int goalConceded;
 //	private int cleanSheets;
 	private int assists;
@@ -23,7 +23,7 @@ public class PerformanceLastSeason {
 	private int yellowCards;
 	private int doubleYellowCards;
 	private int redCards;
-	private double minutesPlayed;
+	private long minutesPlayed;
 	
 	public String getSeason() {
 		return season;
@@ -44,10 +44,10 @@ public class PerformanceLastSeason {
 	public void setNation(String nation) {
 		this.nation = nation;
 	}
-	public String getMarketValue() {
+	public long getMarketValue() {
 		return marketValue;
 	}
-	public void setMarketValue(String marketValue) {
+	public void setMarketValue(long marketValue) {
 		this.marketValue = marketValue;
 	}
 	/*
@@ -119,10 +119,10 @@ public class PerformanceLastSeason {
 	public void setRedCards(int redCards) {
 		this.redCards = redCards;
 	}
-	public double getMinutesPlayed() {
+	public long getMinutesPlayed() {
 		return minutesPlayed;
 	}
-	public void setMinutesPlayed(double minutesPlayed) {
+	public void setMinutesPlayed(long minutesPlayed) {
 		this.minutesPlayed = minutesPlayed;
 	}
 	public String getRole() {
