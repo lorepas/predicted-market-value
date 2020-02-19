@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dm.view.AppController">
+   <center>
+      <TabPane prefHeight="467.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Generate File">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane layoutX="131.0" layoutY="75.0" prefHeight="438.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <bottom>
+                              <Label fx:id="fileResult" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="30.0" />
+                                 </BorderPane.margin>
+                                 <font>
+                                    <Font name="Calibri" size="23.0" />
+                                 </font>
+                              </Label>
+                           </bottom>
+                           <left>
+                              <Button fx:id="generateFileJSON" mnemonicParsing="false" onAction="#ActionGenerateFileJson" text="JSON FILE" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets left="50.0" />
+                                 </BorderPane.margin></Button>
+                           </left>
+                           <right>
+                              <Button fx:id="generateFileCSV" mnemonicParsing="false" onAction="#ActionGenerateFileCSV" text="CSV FILE" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets right="50.0" />
+                                 </BorderPane.margin>
+                              </Button>
+                           </right>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Let's try!">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
