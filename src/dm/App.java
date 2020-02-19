@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
+import dm.classifier.RandomTreeClassifier;
 import dm.persistence.DAOPlayer;
 import dm.persistence.IDAOPlayer;
 import javafx.application.Application;
@@ -17,9 +18,14 @@ import javafx.fxml.FXMLLoader;
 public class App extends Application {
 	public static App sharedInstance = new App();
 	private IDAOPlayer daoPlayer = new DAOPlayer();
+	private RandomTreeClassifier rtc = new RandomTreeClassifier();
 	
 	public IDAOPlayer getDaoPlayer() {
 		return daoPlayer;
+	}
+	
+	public RandomTreeClassifier getRandomTreeClassifier() {
+		return rtc;
 	}
 	
 	@Override
