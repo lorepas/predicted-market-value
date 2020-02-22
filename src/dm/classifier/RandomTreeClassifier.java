@@ -14,6 +14,7 @@ import javax.swing.JFileChooser;
 
 import com.google.gson.reflect.TypeToken;
 
+import dm.App;
 import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
@@ -31,44 +32,26 @@ import weka.filters.unsupervised.attribute.NumericToNominal;
 
 public class RandomTreeClassifier {
 	
-	public void classifier(String team,String nation,String role,String bornDate,int presences,int calls,int goals,int assists,int penaltyGoals,int ownGoals,int yellowCards,int doubleYellowCards,int redCards,long minutesPlayed) throws Exception {
-		String defaultDirectoryPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-		//DataSource source = new DataSource(defaultDirectoryPath+"\\playerStatistics.arff");
-		CSVLoader csv = new CSVLoader();
-		csv.setSource(new File(defaultDirectoryPath+"\\playerStatistic.csv"));
-		csv.setNoHeaderRowPresent(false);
-		csv.setNominalAttributes("1-4");
-		csv.setDateAttributes("5");
-		csv.setDateFormat("dd/MM/yyyy");
-		csv.setFieldSeparator(";");
-		Instances trainDataset = csv.getDataSet();
-		trainDataset.deleteAttributeAt(0);
-		System.out.println(trainDataset);
-		List teamNominal = new ArrayList();
-		List nationNominal = new ArrayList();
-		List roleNominal = new ArrayList();
+	private List<String> teamNominal = new ArrayList();
+	private List<String> nationNominal = new ArrayList();
+	private List<String> roleNominal = new ArrayList(); 
+	
+	public List<String> getTeamNominal() {
+		return teamNominal;
+	}
 
-		for(int i=0;i<trainDataset.numDistinctValues(1);i++) {
-			teamNominal.add(trainDataset.attribute(1).value(i));
-		}
+	public List<String> getNationNominal() {
+		return nationNominal;
+	}
+
+	public List<String> getRoleNominal() {
+		return roleNominal;
+	}
+	
+	public void classifier(String team,String nation,String role,String bornDate,int presences,int calls,int goals,int assists,int penaltyGoals,int ownGoals,int yellowCards,int doubleYellowCards,int redCards,long minutesPlayed) throws Exception {
 		
-		for(int i=0;i<trainDataset.numDistinctValues(2);i++) {
-			nationNominal.add(trainDataset.attribute(2).value(i));
-		}
-		
-		for(int i=0;i<trainDataset.numDistinctValues(3);i++) {
-			roleNominal.add(trainDataset.attribute(3).value(i));
-		}
-		
-		//Setting the classes
-		trainDataset.setClassIndex(trainDataset.numAttributes()-1);
-		
-		//Classifier
-//		String[] options = new String[2];
-//		options[0]="-print";
-//		options[1]="-attribute-importance";
-//		 
-//		randomForest.setOptions(options);
+		Instances trainDataset = new Instances(App.getSharedInstance().getDataSet());
+		System.out.println(trainDataset);
 		RandomForest randomForest = new RandomForest();
 		randomForest.buildClassifier(trainDataset);
 		Evaluation eval = new Evaluation(trainDataset);
