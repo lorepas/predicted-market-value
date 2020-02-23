@@ -95,9 +95,9 @@ public class AppController {
 		Integer doubleYellowCardsNumber = Integer.valueOf(doubleYellowCardsTextField.getText()); 
 		Integer redCardsNumber = Integer.valueOf(redCardsTextField.getText());
 		Long minutesPlayedNumber = Long.valueOf(minutesPlayedTextField.getText());
-		App.sharedInstance.getRandomTreeClassifier().classifier(textTeam,textNation,textRole,textBornDate,presenciesNumber,callsNumber,
+		double res = App.sharedInstance.getRandomTreeClassifier().classifier(textTeam,textNation,textRole,textBornDate,presenciesNumber,callsNumber,
 				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
-		
+		valuePredectedLabel.setText(String.valueOf(res));
 	}
 	
 	public void ActionUpdateFile(ActionEvent e) throws Exception {
@@ -228,6 +228,21 @@ public class AppController {
 		comboBoxNation.setItems(obListNations);
 		datasetFiltered.setClassIndex(datasetFiltered.numAttributes()-1);
 		App.getSharedInstance().setDataSet(datasetFiltered);
+	}
+	
+	public void ActionRefresh(ActionEvent e) {
+		bornDateTextField.setText(""); 
+		presencesTextField.setText(""); 
+		callsTextField.setText("");
+		goalsTextField.setText("");
+		assistsTextField.setText("");
+		penaltyGoalsTextField.setText("");
+		ownGoalsTextField.setText("");
+		yellowCardsTextField.setText("");
+		doubleYellowCardsTextField.setText(""); 
+		redCardsTextField.setText("");
+		minutesPlayedTextField.setText("");
+		valuePredectedLabel.setText("");
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {

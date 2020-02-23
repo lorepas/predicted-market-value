@@ -51,7 +51,7 @@ public class RandomTreeClassifier {
 		return roleNominal;
 	}
 	
-	public void classifier(String team,String nation,String role,String bornDate,int presences,int calls,int goals,int assists,int penaltyGoals,int ownGoals,int yellowCards,int doubleYellowCards,int redCards,long minutesPlayed) throws Exception {
+	public double classifier(String team,String nation,String role,String bornDate,int presences,int calls,int goals,int assists,int penaltyGoals,int ownGoals,int yellowCards,int doubleYellowCards,int redCards,long minutesPlayed) throws Exception {
 		
 		Instances trainDataset = new Instances(App.getSharedInstance().getDataSet());
 		//System.out.println(trainDataset);
@@ -111,6 +111,8 @@ public class RandomTreeClassifier {
 //		System.out.println(randomForest.classifyInstance(newDataset.firstInstance()));
 		
 		System.out.println("\nEstimate Market Value:\n");
-		System.out.println(randomForest.classifyInstance(trainDataset.lastInstance()));
+		double res = Double.doubleToLongBits(randomForest.classifyInstance(trainDataset.lastInstance()));
+		System.out.println(res);
+		return res;
 	}
 }

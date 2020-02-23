@@ -151,7 +151,7 @@
                                     <Font name="Helvetica" size="13.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="valuePredectedLabel" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label fx:id="valuePredectedLabel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
                               <ComboBox fx:id="comboBoxTeam" prefWidth="150.0" promptText="                  TEAM" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets right="10.0" />
@@ -160,6 +160,7 @@
                               <ComboBox fx:id="comboBoxNation" prefWidth="150.0" promptText="               NATION" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <Label text="INSERT FILE:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                               <Button fx:id="insertFileButton" mnemonicParsing="false" onAction="#ActionUpdateFile" text="INSERT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Button mnemonicParsing="false" onAction="#ActionRefresh" text="REFRESH" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                      </children></AnchorPane>
