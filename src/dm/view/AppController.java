@@ -25,7 +25,11 @@ import weka.filters.unsupervised.instance.RemoveWithValues;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.JFileChooser;
@@ -97,7 +101,8 @@ public class AppController {
 		Long minutesPlayedNumber = Long.valueOf(minutesPlayedTextField.getText());
 		double res = App.sharedInstance.getRandomTreeClassifier().classifier(textTeam,textNation,textRole,textBornDate,presenciesNumber,callsNumber,
 				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
-		valuePredectedLabel.setText(String.valueOf(res));
+		String predRes = NumberFormat.getInstance(new Locale("it", "IT")).format(res);
+		valuePredectedLabel.setText(predRes+" €");
 	}
 	
 	public void ActionUpdateFile(ActionEvent e) throws Exception {

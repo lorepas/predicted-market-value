@@ -2,7 +2,10 @@ package dm.classifier;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -111,8 +114,8 @@ public class RandomTreeClassifier {
 //		System.out.println(randomForest.classifyInstance(newDataset.firstInstance()));
 		
 		System.out.println("\nEstimate Market Value:\n");
-		double res = Double.doubleToLongBits(randomForest.classifyInstance(trainDataset.lastInstance()));
-		System.out.println(res);
+		//double res = Double.doubleToLongBits(randomForest.classifyInstance(trainDataset.lastInstance()));
+		double res = randomForest.classifyInstance(trainDataset.lastInstance());
 		return res;
 	}
 }
