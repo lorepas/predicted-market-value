@@ -15,6 +15,12 @@ import javafx.stage.FileChooser;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.CSVLoader;
+import weka.filters.Filter;
+import weka.filters.MultiFilter;
+import weka.filters.unsupervised.attribute.Remove;
+import weka.filters.unsupervised.attribute.ReplaceMissingValues;
+import weka.filters.unsupervised.attribute.ReplaceWithMissingValue;
+import weka.filters.unsupervised.instance.RemoveWithValues;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,7 +99,8 @@ public class AppController {
 				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
 		
 	}
-	public void ActionUpdateFile(ActionEvent e) throws IOException {
+	
+	public void ActionUpdateFile(ActionEvent e) throws Exception {
 		FileChooser chooser = new FileChooser();
 		FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("CSV files(*.csv)","*.csv" );
 		chooser.getExtensionFilters().add(extensionFilter);
@@ -119,29 +126,98 @@ public class AppController {
 		
 	}
 	
-	public void loadTrainingDataset(String path) throws IOException {
+	public void loadTrainingDataset(String path) throws Exception {
 		CSVLoader csv = new CSVLoader();
 		csv.setSource(new File(path));
-		//csv.setNoHeaderRowPresent(false);
+		csv.setNoHeaderRowPresent(false);
 		csv.setNominalAttributes("1-4");
 		csv.setDateAttributes("5");
 		csv.setDateFormat("dd/MM/yyyy");
-		csv.setFieldSeparator(";");
+		csv.setMissingValue("null");
 		Instances trainDataset = csv.getDataSet();
-		trainDataset.deleteAttributeAt(0);
+		
+		//Declaration of all filters
+		Remove remove = new Remove();
+		Filter[] filters = new Filter[4];
+		for(int i=0;i<4;i++)
+			filters[i] = new RemoveWithValues();
+		
+		//Remove attribute season
+		String[] optionsRemove = new String[2];
+		optionsRemove[0]="-R";
+		optionsRemove[1]="1";
+		remove.setOptions(optionsRemove);
+		remove.setInputFormat(trainDataset);
+		
+		//Create new dataset with one attribute less
+		Instances datasetFiltered = Filter.useFilter(trainDataset, remove);
+		
+		//Remove missing values
+		String[] optionsRemoveMV = new String[7];
+		optionsRemoveMV[0]="-S";
+		optionsRemoveMV[1]="0.0";
+		optionsRemoveMV[2]="-C";
+		optionsRemoveMV[3]="4";
+		optionsRemoveMV[4]="-L";
+		optionsRemoveMV[5]="first-last";
+		optionsRemoveMV[6]="-M";
+		filters[0].setOptions(optionsRemoveMV);
+		filters[0].setInputFormat(datasetFiltered);
+		datasetFiltered = Filter.useFilter(datasetFiltered, filters[0]);
+		
+		//Remove Portieri
+		String[] optionsRemoveP = new String[6];
+		optionsRemoveP[0]="-S";
+		optionsRemoveP[1]="0.0";
+		optionsRemoveP[2]="-C";
+		optionsRemoveP[3]="3";
+		optionsRemoveP[4]="-L";
+		optionsRemoveP[5]="3";
+		filters[1].setOptions(optionsRemoveP);
+		filters[1].setInputFormat(datasetFiltered);
+		datasetFiltered = Filter.useFilter(datasetFiltered, filters[1]);
+		
+		//Remove old
+		String[] optionsRemoveOld = new String[6];
+		optionsRemoveOld[0]="-S";
+		optionsRemoveOld[1]="4.73382E11";
+		optionsRemoveOld[2]="-C";
+		optionsRemoveOld[3]="4";
+		optionsRemoveOld[4]="-L";
+		optionsRemoveOld[5]="first-last";
+		filters[2].setOptions(optionsRemoveOld);
+		filters[2].setInputFormat(datasetFiltered);
+		datasetFiltered = Filter.useFilter(datasetFiltered, filters[2]);
+		
+		//Remove young
+		String[] optionsRemoveYoung = new String[7];
+		optionsRemoveYoung[0]="-S";
+		optionsRemoveYoung[1]="1.0412892E12";
+		optionsRemoveYoung[2]="-C";
+		optionsRemoveYoung[3]="4";
+		optionsRemoveYoung[4]="-L";
+		optionsRemoveYoung[5]="first-last";
+		optionsRemoveYoung[6]="-V";
+		filters[3].setOptions(optionsRemoveYoung);
+		filters[3].setInputFormat(datasetFiltered);
+		datasetFiltered = Filter.useFilter(datasetFiltered, filters[3]);
+		
+		System.out.println(datasetFiltered.numInstances());
 		List<String> listTeams = App.getSharedInstance().getRandomTreeClassifier().getTeamNominal();
 		List<String> listNations = App.getSharedInstance().getRandomTreeClassifier().getNationNominal();
 		List<String> listRoles = App.getSharedInstance().getRandomTreeClassifier().getRoleNominal();
-		for(int i=0;i<trainDataset.numDistinctValues(0);i++) {
-			listTeams.add(trainDataset.attribute(0).value(i));
+		for(int i=0;i<datasetFiltered.numDistinctValues(0);i++) {
+			listTeams.add(datasetFiltered.attribute(0).value(i));
 		}
 		
-		for(int i=0;i<trainDataset.numDistinctValues(1);i++) {
-			listNations.add(trainDataset.attribute(1).value(i));
+		for(int i=0;i<datasetFiltered.numDistinctValues(1);i++) {
+			listNations.add(datasetFiltered.attribute(1).value(i));
 		}
 		
-		for(int i=0;i<trainDataset.numDistinctValues(2);i++) {
-			listRoles.add(trainDataset.attribute(2).value(i));
+		for(int i=0;i<datasetFiltered.numDistinctValues(2);i++) {
+			if(datasetFiltered.attribute(2).value(i).equals("Portiere"))
+				continue;
+			listRoles.add(datasetFiltered.attribute(2).value(i));
 		}
 		
 		ObservableList<String> obListTeams = FXCollections.observableArrayList(listTeams);
@@ -150,12 +226,8 @@ public class AppController {
 		comboBoxTeam.setItems(obListTeams);
 		comboBoxRole.setItems(obListRoles);
 		comboBoxNation.setItems(obListNations);
-		trainDataset.setClassIndex(trainDataset.numAttributes()-1);
-		System.out.println(trainDataset);
-		App.getSharedInstance().setDataSet(trainDataset);
-		
-		
-		
+		datasetFiltered.setClassIndex(datasetFiltered.numAttributes()-1);
+		App.getSharedInstance().setDataSet(datasetFiltered);
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {

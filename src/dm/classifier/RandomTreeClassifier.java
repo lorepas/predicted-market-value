@@ -29,6 +29,9 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Add;
 import weka.filters.unsupervised.attribute.NumericToNominal;
+import weka.filters.unsupervised.attribute.Remove;
+import weka.filters.unsupervised.attribute.ReplaceMissingValues;
+import weka.filters.unsupervised.instance.RemoveWithValues;
 
 public class RandomTreeClassifier {
 	
@@ -51,12 +54,57 @@ public class RandomTreeClassifier {
 	public void classifier(String team,String nation,String role,String bornDate,int presences,int calls,int goals,int assists,int penaltyGoals,int ownGoals,int yellowCards,int doubleYellowCards,int redCards,long minutesPlayed) throws Exception {
 		
 		Instances trainDataset = new Instances(App.getSharedInstance().getDataSet());
+//		Remove remove = new Remove();
+//		RemoveWithValues rwv1 = new RemoveWithValues();
+//		RemoveWithValues rwv2 = new RemoveWithValues();
+//		RemoveWithValues rwv3 = new RemoveWithValues();
+//		RemoveWithValues rwv4 = new RemoveWithValues();
+//		ReplaceMissingValues rmv = new ReplaceMissingValues();
+//		
+//		//remove missing values
+//		rmv.setInputFormat(trainDataset);
+//		
+//		//remove season attribute
+//		remove.setAttributeIndices("1");
+//		remove.setInputFormat(trainDataset);
+//		
+//		//remove calls == 0
+//		rwv1.setAttributeIndex("5");
+//		rwv1.setSplitPoint(1.0);
+//		rwv1.setInputFormat(trainDataset);
+//		
+//		//remove portieri
+//		rwv2.setAttributeIndex("3");
+//		rwv2.setNominalIndices("3");
+//		rwv2.setInputFormat(trainDataset);
+//		
+//		//remove date < 1985
+//		rwv3.setAttributeIndex("4");
+//		rwv3.setSplitPoint(473385600.0);
+//		rwv3.setInputFormat(trainDataset);
+//		
+//		//remove date > 2002
+//		rwv4.setAttributeIndex("4");
+//		rwv4.setSplitPoint(1041379199.0);
+//		rwv4.setInvertSelection(true);
+//		rwv4.setInputFormat(trainDataset);
+//		
+//		Instances newInst = Filter.useFilter(trainDataset, rmv);
+//		newInst= Filter.useFilter(trainDataset, rmv);
+//		newInst = Filter.useFilter(trainDataset, rwv1);
+//		newInst = Filter.useFilter(trainDataset, rwv2);
+//		newInst = Filter.useFilter(trainDataset, rwv3);
+//		newInst = Filter.useFilter(trainDataset, rwv4);
+//		newInst = Filter.useFilter(trainDataset, remove);
+//		
+//		System.out.println(newInst);
 		System.out.println(trainDataset);
-		RandomForest randomForest = new RandomForest();
-		randomForest.buildClassifier(trainDataset);
-		Evaluation eval = new Evaluation(trainDataset);
-		eval.crossValidateModel(randomForest, trainDataset, 10, new Random(1));
-		System.out.println(eval.toSummaryString("\nResults:\n\n",false));
+		
+//		RandomForest randomForest = new RandomForest();
+//		randomForest.buildClassifier(trainDataset);
+//		Evaluation eval = new Evaluation(trainDataset);
+//		eval.crossValidateModel(randomForest, trainDataset, 10, new Random(1));
+//		System.out.println(eval.toSummaryString("\nResults:\n\n",false));
 
 		//Creating new dataset for new statistics
 //		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
@@ -108,6 +156,6 @@ public class RandomTreeClassifier {
 		System.out.println(trainDataset);
 		
 		System.out.println("\nEstimate Market Value:\n");
-		System.out.println(randomForest.classifyInstance(trainDataset.lastInstance()));
+//		System.out.println(randomForest.classifyInstance(trainDataset.lastInstance()));
 	}
 }

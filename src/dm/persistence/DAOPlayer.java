@@ -157,7 +157,7 @@ public class DAOPlayer implements IDAOPlayer {
 					String dateString = new SimpleDateFormat("dd/MM/yyyy").format(bornDate);
 					document.put("bornDate", dateString);
 				}
-				PerformanceLastSeason performance = PerformanceLastSeason.teamFromJson(document.toJson());
+				PerformanceLastSeason performance = PerformanceLastSeason.teamFromJson(document.toJson().replaceAll("'", " "));
 				d_performances.add(performance);
 			}
 		} catch(MongoException me) {
