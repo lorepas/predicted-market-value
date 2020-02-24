@@ -18,6 +18,133 @@
    <center>
       <TabPane prefHeight="467.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
+          <Tab text="Let's try!">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="134.0" layoutY="162.0" prefHeight="434.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="bornDateTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert born date dd/MM/yyyy" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="BORN DATE:" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                              <Label text="CALLS:" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                              <Label text="OWN GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                              <Label text="PRESENCES:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <Label text="ASSISTS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <Label text="PENALTY GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                              <Label text="YELLOW CARDS:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="DOUBLE YELLOW CARDS:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <Label text="RED CARDS:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <Label text="MINUTES PLAYED:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                              <TextField fx:id="presencesTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert presences..." GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="yellowCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert yellow cards..." GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="goalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert goals..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="doubleYellowCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert double yellow cards..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="assistsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert assists..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="redCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert red cards..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="penaltyGoalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert penalty goals..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="minutesPlayedTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert minutes played..." GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="callsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert calls..." GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="ownGoalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert own goals..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Button fx:id="predictionButton" mnemonicParsing="false" onAction="#ActionPredictionMarketValue" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #4c9149;" text="PREDICT" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label text="PREDICTED MARKET VALUE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valuePredectedLabel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></Label>
+                              <ComboBox fx:id="comboBoxTeam" prefWidth="150.0" promptText="                  TEAM" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin></ComboBox>
+                              <ComboBox fx:id="comboBoxRole" prefWidth="150.0" promptText="                  ROLE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <ComboBox fx:id="comboBoxNation" prefWidth="150.0" promptText="               NATION" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Label text="INSERT FILE:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Button fx:id="insertFileButton" mnemonicParsing="false" onAction="#ActionUpdateFile" text="INSERT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Button mnemonicParsing="false" onAction="#ActionRefresh" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #de6259;" text="REFRESH" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label fx:id="pathFile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Label text="Max value - Min value" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label fx:id="maxMinValue" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
           <Tab text="Generate File">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -49,121 +176,6 @@
                         </BorderPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Let's try!">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <GridPane layoutX="134.0" layoutY="162.0" prefHeight="434.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label text="BORN DATE:" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                              <Label text="CALLS:" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                              <Label text="OWN GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                              <Label text="PRESENCES:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                              <Label text="ASSISTS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <Label text="PENALTY GOALS:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                              <Label text="YELLOW CARDS:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="DOUBLE YELLOW CARDS:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                              <Label text="RED CARDS:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <Label text="MINUTES PLAYED:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                              <TextField fx:id="presencesTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert presences..." text="20" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="yellowCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert yellow cards..." text="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="goalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert goals..." text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="doubleYellowCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert double yellow cards..." text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="assistsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert assists..." text="3" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="redCardsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert red cards..." text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="bornDateTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert born date..." text="10/10/1990" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="penaltyGoalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert penalty goals..." text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="minutesPlayedTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert minutes played..." text="1200" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="callsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert calls..." text="20" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="ownGoalsTextField" alignment="CENTER" onAction="#ActionPredictionMarketValue" promptText="Insert own goals..." text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <Button fx:id="predictionButton" mnemonicParsing="false" onAction="#ActionPredictionMarketValue" prefHeight="27.0" prefWidth="122.0" text="PREDICT" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                              <Label text="VALUE PREDECTED" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="valuePredectedLabel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                              <ComboBox fx:id="comboBoxTeam" prefWidth="150.0" promptText="                  TEAM" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                 <GridPane.margin>
-                                    <Insets right="10.0" />
-                                 </GridPane.margin></ComboBox>
-                              <ComboBox fx:id="comboBoxRole" prefWidth="150.0" promptText="                  ROLE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <ComboBox fx:id="comboBoxNation" prefWidth="150.0" promptText="               NATION" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                              <Label text="INSERT FILE:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Button fx:id="insertFileButton" mnemonicParsing="false" onAction="#ActionUpdateFile" text="INSERT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Button mnemonicParsing="false" onAction="#ActionRefresh" text="REFRESH" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                           </children>
-                        </GridPane>
-                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>

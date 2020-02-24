@@ -28,6 +28,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -58,6 +59,7 @@ public class AppController {
 	@FXML TextField minutesPlayedTextField;
 	@FXML TextField callsTextField;
 	@FXML TextField ownGoalsTextField;
+	@FXML Label pathFile;
 	@FXML Button predictionButton;
 	@FXML Label valuePredectedLabel;
 	@FXML ComboBox<String> comboBoxTeam;
@@ -65,6 +67,7 @@ public class AppController {
 	@FXML ComboBox<String> comboBoxRole;
 	ObservableList comboDefault = FXCollections.observableArrayList();
 	@FXML Button insertFileButton;
+	@FXML Label maxMinValue;
 	
 	
 	
@@ -103,6 +106,12 @@ public class AppController {
 				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
 		String predRes = NumberFormat.getInstance(new Locale("it", "IT")).format(res);
 		valuePredectedLabel.setText(predRes+" €");
+		double error = (res*47)/100;
+		double maxValue = res + error;
+		double minValue = res - error;
+		String predMax = NumberFormat.getInstance(new Locale("it", "IT")).format(maxValue);
+		String predMin = NumberFormat.getInstance(new Locale("it", "IT")).format(minValue);
+		maxMinValue.setText(predMax+" € - "+predMin+" €");
 	}
 	
 	public void ActionUpdateFile(ActionEvent e) throws Exception {
@@ -122,6 +131,7 @@ public class AppController {
 		String path;
 		if(chosenFile != null) {
 		    path = chosenFile.getPath();
+		    pathFile.setText(path);
 		    loadTrainingDataset(path);
 			
 		} else {
@@ -228,6 +238,9 @@ public class AppController {
 		ObservableList<String> obListTeams = FXCollections.observableArrayList(listTeams);
 		ObservableList<String> obListNations = FXCollections.observableArrayList(listNations);
 		ObservableList<String> obListRoles = FXCollections.observableArrayList(listRoles);
+		FXCollections.sort(obListTeams);
+		FXCollections.sort(obListNations);
+		FXCollections.sort(obListRoles);
 		comboBoxTeam.setItems(obListTeams);
 		comboBoxRole.setItems(obListRoles);
 		comboBoxNation.setItems(obListNations);
@@ -248,6 +261,10 @@ public class AppController {
 		redCardsTextField.setText("");
 		minutesPlayedTextField.setText("");
 		valuePredectedLabel.setText("");
+		maxMinValue.setText("");
+		comboBoxTeam.getSelectionModel().clearSelection();
+		comboBoxNation.getSelectionModel().clearSelection();
+		comboBoxRole.getSelectionModel().clearSelection();
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
