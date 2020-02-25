@@ -105,13 +105,13 @@ public class AppController {
 		double res = App.sharedInstance.getRandomTreeClassifier().classifier(textTeam,textNation,textRole,textBornDate,presenciesNumber,callsNumber,
 				ownGoalsNumber,goalsNumber,assistsNumber,penaltyGoalsNumber,yellowCardsNumber,doubleYellowCardsNumber,redCardsNumber,minutesPlayedNumber);
 		String predRes = NumberFormat.getInstance(new Locale("it", "IT")).format(res);
-		valuePredectedLabel.setText(predRes+" €");
+		valuePredectedLabel.setText(predRes+" \u20AC");
 		double error = (res*47)/100;
 		double maxValue = res + error;
 		double minValue = res - error;
 		String predMax = NumberFormat.getInstance(new Locale("it", "IT")).format(maxValue);
 		String predMin = NumberFormat.getInstance(new Locale("it", "IT")).format(minValue);
-		maxMinValue.setText(predMax+" € - "+predMin+" €");
+		maxMinValue.setText(predMax+" \u20AC - "+predMin+" \u20AC");
 	}
 	
 	public void ActionUpdateFile(ActionEvent e) throws Exception {
@@ -180,7 +180,7 @@ public class AppController {
 		filters[0].setInputFormat(datasetFiltered);
 		datasetFiltered = Filter.useFilter(datasetFiltered, filters[0]);
 		
-		//Remove Portieri
+		//Remove Goalkeeper
 		String[] optionsRemoveP = new String[6];
 		optionsRemoveP[0]="-S";
 		optionsRemoveP[1]="0.0";

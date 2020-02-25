@@ -39,7 +39,6 @@ public class Utils {
 	public static MongoClient getMongoClient() throws MongoException {
 		MongoClientOptions.Builder builder = new MongoClientOptions.Builder();
 		builder.maxConnectionIdleTime(60000);
-//		builder.sslEnabled(true);
 		List<ServerAddress> servers = new ArrayList<ServerAddress>();
 		servers.add(new ServerAddress("172.16.0.132", 27018));
 		servers.add(new ServerAddress("172.16.0.136", 27018));
@@ -49,7 +48,6 @@ public class Utils {
 			mongoClient.getAddress();
 		} catch (Exception e) {
 			System.out.println("Mongo is down");
-//			mongoClient.close();
 			throw new MongoException("Mongo is down: you should connect with a VPN");
 		}
 		return mongoClient;

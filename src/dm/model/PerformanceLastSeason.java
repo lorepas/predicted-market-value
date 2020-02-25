@@ -12,8 +12,6 @@ public class PerformanceLastSeason {
 	private String role;
 	private String bornDate;
 	private long marketValue;
-//	private int goalConceded;
-//	private int cleanSheets;
 	private int assists;
 	private int penalityGoals;
 	private int calls;
@@ -50,20 +48,6 @@ public class PerformanceLastSeason {
 	public void setMarketValue(long marketValue) {
 		this.marketValue = marketValue;
 	}
-	/*
-	public Integer getGoalConceded() {
-		return goalConceded;
-	}
-	public void setGoalConceded(Integer goalConceded) {
-		this.goalConceded = goalConceded;
-	}
-	public Integer getCleanSheets() {
-		return cleanSheets;
-	}
-	public void setCleanSheets(Integer cleanSheets) {
-		this.cleanSheets = cleanSheets;
-	}
-	*/
 	public int getAssists() {
 		return assists;
 	}
